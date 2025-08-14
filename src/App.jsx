@@ -1,7 +1,7 @@
 import * as trackService from "./services/trackService";
 import { useState, useEffect } from "react";
 import TrackList from "./components/TrackList/TrackList";
-import TrackDetail from "./components/TrackDetail/TrackDetail";
+import NowPlaying from "./components/NowPlaying/NowPlaying";
 import TrackForm from "./components/TrackForm/TrackForm";
 
 const App = () => {
@@ -93,7 +93,7 @@ const App = () => {
 					selected={selected}
 				/>
 			) : (
-				<TrackDetail
+				<NowPlaying
 					selected={selected}
 					handleFormView={handleFormView}
 					handleDeleteTrack={handleDeleteTrack}

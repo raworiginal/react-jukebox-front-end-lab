@@ -16,4 +16,4 @@ const NowPlaying = ({ selected, handleDeleteTrack, handleFormView }) => {
 	);
 };
 
-export default TrackDetail;
+export default NowPlaying;

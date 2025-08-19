@@ -30,10 +30,14 @@ const App = () => {
 	};
 
 	const handleFormView = (track) => {
-		if (!track._id) setSelected(null);
-		setIsFormOpen(!isFormOpen);
+		track._id ? setSelected(track) : setSelected(null);
+		setIsFormOpen(true);
 	};
-
+	const handleEditSelect = (track) => {
+		setSelected(track);
+		setIsFormOpen(true);
+		hand;
+	};
 	const handleAddTrack = async (formData) => {
 		try {
 			const newTrack = await trackService.create(formData);
@@ -80,25 +84,25 @@ const App = () => {
 
 	return (
 		<>
-			<TrackList
-				tracks={tracks}
-				handleSelect={handleSelect}
-				handleFormView={handleFormView}
-				isFormOpen={isFormOpen}
-			/>
-			{isFormOpen ? (
-				<TrackForm
-					handleAddTrack={handleAddTrack}
-					handleUpdateTrack={handleUpdateTrack}
-					selected={selected}
-				/>
-			) : (
-				<NowPlaying
-					selected={selected}
+			<section className="container is-max-desktop">
+				<TrackList
+					tracks={tracks}
+					handleSelect={handleSelect}
 					handleFormView={handleFormView}
+					isFormOpen={isFormOpen}
 					handleDeleteTrack={handleDeleteTrack}
+					selected={selected}
 				/>
-			)}
+				{isFormOpen ? (
+					<TrackForm
+						handleAddTrack={handleAddTrack}
+						handleUpdateTrack={handleUpdateTrack}
+						selected={selected}
+					/>
+				) : (
+					<NowPlaying selected={selected} />
+				)}
+			</section>
 		</>
 	);
 };
